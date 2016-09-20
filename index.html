@@ -8,6 +8,22 @@
 <p>Enter the URL of a YouTube video</p>
   URL: <input type="text" id="videoURL"><br>
   <button onclick="submitButton()">Submit</button>
+
+<p> Or click here to play a video </p>
+<button onclick="playLocal()">Play</button>
+<div id="vidPlayer" style="display: none">
+<video id="vid" width="420" controls>
+    <source src="poppy.mp4" type="video/mp4">
+</video>
+</div>
+
+<div id="youtubeDiv" style="display: none">
+<iframe id="youtubeVid" width="560" height="315" src="" frameborder="0" allowfullscreen>
+</iframe>
+</div>
+
+<p>Or choose a file to upload:</p>
+<input type="file" id="fileUpload" name= audioFile onchange="fileUpload()" method="post" enctype="multipart/form-data"><br>
   
 </body>
 </html>
