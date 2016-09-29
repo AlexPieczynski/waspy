@@ -9,7 +9,20 @@ function submitButton()
 function playLocal()
 {
 	document.getElementById("vidPlayer").setAttribute("style", "");
-	document.getElementById("vid").play();
+	var localVid = document.getElementById("vid");
+	localVid.play();
+	
+	var context = new webkitAudioContext();
+	var gainNode = context.createGain();
+	gainNode.gain.value = 100;                   // Change Gain Value for more distortion
+	filter = context.createBiquadFilter();
+	filter.type = 1;                          // Change Filter type to test
+	filter.frequency.value = 5040;            // Change frequency to test 5040
+	
+	var source = context.createMediaElementSource(localVid);
+	source.connect(gainNode);
+	gainNode.connect(filter);
+	filter.connect(context.destination);
 }
 
 function fileUpload()
