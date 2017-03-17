@@ -1,29 +1,55 @@
 <!DOCTYPE html>
 <html>
-<script src="home.js" type="text/javascript"></script>
+
+<script src="js/jquery.js" type="text/javascript"></script>
+<script src="js/tuna-min.js" type="text/javascript"></script>
+<script src="mediaelement/mediaelement-and-player.min.js"></script>
+<script src="js/home.js" type="text/javascript"></script>
+<link href="mediaelement/mediaelementplayer.css" rel="stylesheet">
+
 <body>
 <head>
 	<title> waspy </title>
 </head>
 <p>Enter the URL of a YouTube video</p>
   URL: <input type="text" id="videoURL"><br>
-  <button onclick="submitButton()">Submit</button>
+  <button onclick="embedButton()">Embed</button>
+
+<p>
+<select id= "selectEffect" name="Select An Effect:">
+	<option>Distortion</option>
+	<option>Chorus</option>
+	<option>Delay</option>
+	<option>Tremolo</option>
+	<option>Lo-Fi</option>
+	<option>Compressor</option>
+	<option>Reverb</option>
+	<option>WahWah</option>
+	<option>None</option>
+</select>
+<button onclick="applyEffect()">Apply</button>
+</p>
 
 <p> Or click here to play a video </p>
 <button onclick="playLocal()">Play</button>
 <div id="vidPlayer" style="display: none">
 <video id="vid" width="420" controls>
-    <source src="poppy.mp4" type="video/mp4">
+    <source src="media/poppy.mp4" type="video/mp4">
 </video>
 </div>
 
-<div id="youtubeDiv" style="display: none">
+<!-- <div id="youtubeDiv" style="display: none">
 <iframe id="youtubeVid" width="560" height="315" src="" frameborder="0" allowfullscreen>
 </iframe>
-</div>
-
-<p>Or choose a file to upload:</p>
-<input type="file" id="fileUpload" name= audioFile onchange="fileUpload()" method="post" enctype="multipart/form-data"><br>
+</div> -->
+<!-- 
+<video width="640" height="360" id="ytPlayer" preload="none" controls>
+    <source type="video/youtube" src="http://www.youtube.com/watch?v=nOEw9iiopwI" />
+</video>
+<script type="text/javascript">
+	debugger;
+	var player = new MediaElementPlayer(document.getElementById("ytPlayer"));
+</script> -->
   
 </body>
 </html>
