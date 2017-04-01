@@ -1,21 +1,14 @@
-// handles building the sliders interface to control Tuna's 
+/*
+	handles building the sliders interface to control Tuna's effect parameters
+*/
 
+
+// insert sliders to control a new Tuna effect
 function insertSliders(effectNode)
 {
-	debugger;
 	var sliderDiv = document.getElementById("slider-div");
 	while (sliderDiv.hasChildNodes()) {
 		    sliderDiv.removeChild(sliderDiv.lastChild);
-	}
-
-	// we just changed the effect to "None"
-	// hide the sliders
-	if (effectNode) {
-		sliderDiv.style.display = "";
-	}
-	else {
-		sliderDiv.style.display = "none";
-		return;
 	}
 
 	var params = effectNode.defaults;
@@ -28,12 +21,12 @@ function insertSliders(effectNode)
 		var slider = document.createElement("input");
 		slider.type = "range";
 		slider.id = paramName;
-		slider.defaultValue = param.value;
 		slider.min = param.min;
 		slider.max = param.max;
+		slider.step = 0.025; // scale this according to min/max/**/
+		slider.defaultValue = param.value;
 		slider.value = param.value;
-		slider.step = 0.025;
-		slider.addEventListener("input", sliderChange); // change to "change" listener if gets too laggy
+		slider.addEventListener("input", sliderChange);
 
 		// create output text
 		var out = document.createElement("output");
@@ -51,7 +44,8 @@ function insertSliders(effectNode)
 	}
 }
 
-// update the output
+// update Tuna param and <output>
+// runs whenever a slider's value changes
 function sliderChange(event)
 {
 	var newVal = event.srcElement.value;

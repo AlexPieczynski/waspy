@@ -298,7 +298,6 @@ function audioVisualizer(width, height, containerSelector, sourceSelector, playe
 
         // make container for the sliders
         var sliderDiv = document.createElement("div");
-        sliderDiv.style.display = "none";
         sliderDiv.id = "slider-div";
         inst.$player.prepend(sliderDiv);
 
@@ -515,9 +514,6 @@ function audioVisualizer(width, height, containerSelector, sourceSelector, playe
                     return;
         }
 
-        // if (inst.effectNode != null) {
-        //     inst.source.disconnect(inst.effectNode);
-        // }
         inst.source.disconnect();
         inst.source.connect(newEffect);
 

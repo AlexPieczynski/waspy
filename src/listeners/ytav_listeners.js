@@ -1,5 +1,3 @@
-// ADD YOUR CALL TO VIS.CHANGE_EFFECT() HERE, WHICH WILL CALL A FUNCTION IN YTAV.JS
-
 //receives a message and parse it to visualizer actions
 window.addEventListener("message", function(event) {
     //we only accept messages from ourselves
@@ -13,8 +11,6 @@ window.addEventListener("message", function(event) {
             vis.previousScene();
             break;
         case "effectChange":
-            console.log("sent a effectChange message");
-            // vis.changeEffect(parseInt(event.data));
             vis.changeEffect(event.data.content);
             break;
         default:
