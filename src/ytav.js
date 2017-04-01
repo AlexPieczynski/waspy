@@ -509,6 +509,7 @@ function audioVisualizer(width, height, containerSelector, sourceSelector, playe
             case 8:
                     inst.source.disconnect();
                     inst.source.connect(inst.audioCtx.destination);
+                    inst.source.connect(inst.analyser);
                     inst.effectNode = null;
                     insertSliders(null);
                     return;
@@ -522,12 +523,14 @@ function audioVisualizer(width, height, containerSelector, sourceSelector, playe
             lowerVolume.gain.value = 0.19;
             inst.effectNode = newEffect;
             inst.effectNode.connect(lowerVolume);
-            lowerVolume.connect(inst.audioCtx.destination);
+            lowerVolume.connect(inst.analyser);
+            inst.analyser.connect(inst.audioCtx.destination);
             insertSliders(inst.effectNode);
             return;
         }
         inst.effectNode = newEffect;
-        inst.effectNode.connect(inst.audioCtx.destination);
+        inst.effectNode.connect(inst.analyser);
+        inst.analyser.connect(inst.audioCtx.destination);
 
         // update sliders
         insertSliders(inst.effectNode);
