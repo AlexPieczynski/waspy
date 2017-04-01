@@ -296,6 +296,12 @@ function audioVisualizer(width, height, containerSelector, sourceSelector, playe
         //attach the renderer to the DOM element
         inst.$container.prepend(inst.$view);
 
+        // make container for the sliders
+        var sliderDiv = document.createElement("div");
+        sliderDiv.style.display = "none";
+        sliderDiv.id = "slider-div";
+        inst.$player.prepend(sliderDiv);
+
         //generate the PIXI graphics for draw
         inst.g = new PIXI.Graphics();
 
@@ -504,6 +510,8 @@ function audioVisualizer(width, height, containerSelector, sourceSelector, playe
             case 8:
                     inst.source.disconnect();
                     inst.source.connect(inst.audioCtx.destination);
+                    inst.effectNode = null;
+                    insertSliders(null);
                     return;
         }
 
@@ -519,10 +527,14 @@ function audioVisualizer(width, height, containerSelector, sourceSelector, playe
             inst.effectNode = newEffect;
             inst.effectNode.connect(lowerVolume);
             lowerVolume.connect(inst.audioCtx.destination);
+            insertSliders(inst.effectNode);
             return;
         }
         inst.effectNode = newEffect;
         inst.effectNode.connect(inst.audioCtx.destination);
+
+        // update sliders
+        insertSliders(inst.effectNode);
     }
 }
 

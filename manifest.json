@@ -11,7 +11,7 @@
         "128": "waspy_icon_128.png"
     },
 
-    "web_accessible_resources": ["/lib/jquery.js", "/lib/pixi.min.js", "/lib/tuna-min.js", "/src/ytav.js", "/src/listeners/ytav_listeners.js"],
+    "web_accessible_resources": ["/lib/jquery.js", "/lib/pixi.min.js", "/lib/tuna-min.js", "/src/sliders.js", "/src/ytav.js", "/src/listeners/ytav_listeners.js"],
     "content_scripts": [
         {
             "runs_at": "document_end",
