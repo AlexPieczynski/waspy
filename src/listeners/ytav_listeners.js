@@ -4,16 +4,8 @@ window.addEventListener("message", function(event) {
     if (event.source != window)
         return;
     switch (event.data.action) {
-        case "nextScene":
-            vis.nextScene();
-            break;
-        case "previousScene":
-            vis.previousScene();
-            break;
         case "effectChange":
             vis.changeEffect(event.data.content);
-            break;
-        default:
             break;
     }
 }, false);
