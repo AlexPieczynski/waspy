@@ -493,9 +493,6 @@ function audioVisualizer(width, height, containerSelector, sourceSelector, playe
                 });
                 break;
             case 6:
-                //TODO: set up covolution reverb (put files into place)
-                break;
-            case 7:
                 newEffect = new inst.tuna.WahWah({
                     automode: true,                //true/false
                     baseFrequency: 0.4,            //0 to 1
@@ -506,7 +503,7 @@ function audioVisualizer(width, height, containerSelector, sourceSelector, playe
                     bypass: 0
                 });
                 break;
-            case 8:
+            case 7:
                     inst.source.disconnect();
                     inst.source.connect(inst.audioCtx.destination);
                     inst.source.connect(inst.analyser);
